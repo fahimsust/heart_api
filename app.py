@@ -14,6 +14,9 @@ FEATURES = [
   "exang","oldpeak","slope","ca","thal",
   "chol_to_age","hr_ratio","bp_ratio","risk_index"
 ]
+@app.route("/", methods=["GET"])
+def home():
+    return "✅ Heart Disease Prediction API is running! Use POST /predict"
 
 @app.route("/predict", methods=["POST"])
 def predict():
