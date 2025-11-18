@@ -147,6 +147,31 @@ def debug():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+@app.route("/debug/model-details", methods=["GET"])
+def debug_model_details():
+    """Get detailed information about model features"""
+    try:
+        # Common feature combinations for health data
+        common_combinations = [
+            # Combination 1: Basic health metrics
+            ["Sex", "GeneralHealth", "PhysicalHealthDays", "MentalHealthDays", "SleepHours", "BMI"],
+            # Combination 2: Lifestyle focused
+            ["Sex", "GeneralHealth", "PhysicalHealthDays", "SleepHours", "BMI", "PhysicalActivities"],
+            # Combination 3: Mental health focused
+            ["Sex", "GeneralHealth", "MentalHealthDays", "SleepHours", "BMI", "AlcoholDrinkers"],
+            # Combination 4: Physical health focused
+            ["GeneralHealth", "PhysicalHealthDays", "SleepHours", "BMI", "PhysicalActivities", "AlcoholDrinkers"]
+        ]
+        
+        return jsonify({
+            "model_n_features": model.n_features_in_ if hasattr(model, 'n_features_in_') else "Unknown",
+            "scaler_n_features": scaler.n_features_in_ if hasattr(scaler, 'n_features_in_') else "Unknown",
+            "common_6_feature_combinations": common_combinations,
+            "suggestion": "Try each combination above until you find the one that matches your model"
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
 if __name__ == "__main__":
     print("🚀 Starting Health Survey Heart Disease Prediction API...")
     print(f"📋 Expected features: {FEATURES}")
