@@ -95,6 +95,3 @@ def get_features():
 if __name__ == "__main__":
     # 0.0.0.0 so devices on same Wi-Fi can reach it
     app.run(host="0.0.0.0", port=5000, debug=True)
-
-
-    curl -X POST https://heart-api-xb4s.onrender.com/predict -H "Content-Type: application/json" -d '{"inputs": {"age":55, "sex":1, "general_health":2, "physical_health_days":2, "mental_health_days":3, "sleep_hours":7, "bmi":25, "weight_kg":70, "height_meters":1.7, "physical_activities":1, "alcohol_drinkers":0}}'
