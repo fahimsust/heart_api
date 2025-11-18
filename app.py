@@ -13,12 +13,7 @@ scaler = joblib.load("scaler.pkl")  # Updated scaler name
 
 # Updated feature order for health survey data - MATCHES YOUR CSV
 FEATURES = [
-    # From your CSV header
-    "Sex", "GeneralHealth", "PhysicalHealthDays", "MentalHealthDays", 
-    "PhysicalActivities", "SleepHours", "BMI", "AlcoholDrinkers",
-    
-    # Engineered features
-    "total_health_days", "health_days_ratio", "sleep_deviation"
+    "Sex", "GeneralHealth", "PhysicalHealthDays", "MentalHealthDays", "SleepHours", "BMI"
 ]
 
 # Categorical value mappings - MUST MATCH YOUR TRAINING ENCODING
